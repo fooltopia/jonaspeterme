@@ -1,0 +1,16 @@
+[package]
+version = "0.1.0"
+name = "client"
+authors = ["Jonas Peter <hi@jonaspeter.me>"]
+categories = ["category"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.12"
+
+[dependencies]
+seed = "0.8"
+

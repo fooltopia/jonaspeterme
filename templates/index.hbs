@@ -1,0 +1,10 @@
+{{#*inline "page"}}
+<h1>My CV {{year}}</h1>
+<p>I'm having fun with my friends until forever!! </p>
+<section id="app"></section>
+<script type="module">
+ import init from './static/package.js';
+ init('./static/package_bg.wasm');
+</script>
+{{/inline}}
+{{> (parent)}}

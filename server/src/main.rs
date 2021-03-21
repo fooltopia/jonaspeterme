@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 
 use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
+use actix_files as fs;
 use handlebars::Handlebars;
 use std::iter::FromIterator;
 
@@ -22,8 +23,8 @@ async fn main() -> std::io::Result<()> {
     handlebars.set_dev_mode(true);
 
     // register template using given name
-    handlebars.register_template_file("index", "./html/index.hbs").unwrap();
-    handlebars.register_template_file("base", "./html/base.hbs").unwrap();
+    handlebars.register_template_file("index", "./templates/index.hbs").unwrap();
+    handlebars.register_template_file("base", "./templates/base.hbs").unwrap();
 
 
     let hb_ref = web::Data::new(handlebars);
@@ -33,6 +34,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(hb_ref.clone())
             .service(hello)
+            .service(fs::Files::new("/static", "./client/pkg").show_files_listing())
     })
         .bind("127.0.0.1:3000")?
         .run()
