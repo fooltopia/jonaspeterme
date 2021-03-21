@@ -8,5 +8,5 @@ edition = "2018"
 
 [dependencies]
 actix-web = "3"
-handlebars = "3"
+handlebars = "4.0.0-beta.1"
 maplit = "1"
